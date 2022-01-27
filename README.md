@@ -44,6 +44,21 @@ The purpose of this analysis is to determine which machine learning model is bes
 ## Summary
 
 Six models were used, listed ranked in order of accuracy score:
-  * EasyEnsembleClassifier
-  * BalancedRandomForestClassifier
+  * EasyEnsembleClassifier - 93#
+  * BalancedRandomForestClassifier- 78%
+  * SMOTE- 66%
+  * SMOTEENN- 64%
+  * NAive- 64%
+  * ClusterCentroids- 54%
   * 
+Based on the Imbalanced Classification Reports of each model, it appears that every model is able to predict with 100% accuracy applications with low credit risk as the Precision score for the low risk category are all at 100%. That is relatively unimportant though as what is more important during a credit approval process is the ability to identify high risk applications as accurately as possible to avoid potential defaults.
+
+With that in mind, our focus will switch to the high risk category.
+
+Precision Scores:
+All models have less than 10% Precision scores which means that there are lots of false positives i.e. applications that are not high risk but identified as high risk. That is bad for business as that would result in many unnecessary rejections.
+
+Recall Scores:
+The EasyEnsembleClassifier has the highest Recall score for the high risk category of 92%. All other models have scores of around 70%.
+
+I would not recommend the EasyEnsembleClassifier even though it is the best model that we tested.  The F1 score is too low for the model to be used with accuracy out in the wild.
